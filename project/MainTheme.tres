@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://gos5p5rd6tpp"]
+
+[ext_resource type="FontFile" uid="uid://cakqrch6dogsa" path="res://assets/Project Paintball Display.ttf" id="1_4as0w"]
+
+[resource]
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/fonts/normal_font = ExtResource("1_4as0w")

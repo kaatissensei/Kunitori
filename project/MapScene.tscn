@@ -1,0 +1,415 @@
+[gd_scene load_steps=20 format=3 uid="uid://xvwmx62lwi2x"]
+
+[ext_resource type="Script" uid="uid://klc0ydqubjjk" path="res://map_scene.gd" id="1_mq6b6"]
+[ext_resource type="Texture2D" uid="uid://b70gpbumuk7u7" path="res://assets/prefectures/1 Hokkaido.png" id="2_ptcrx"]
+[ext_resource type="Theme" uid="uid://gos5p5rd6tpp" path="res://MainTheme.tres" id="2_yu4rc"]
+[ext_resource type="Texture2D" uid="uid://cejddycbpdtv3" path="res://assets/splat white.png" id="3_3ergn"]
+[ext_resource type="Script" uid="uid://dae4hn8t872dq" path="res://prefecture_btn.gd" id="3_3orfu"]
+[ext_resource type="Texture2D" uid="uid://cr7pgwa6t4j3m" path="res://assets/prefectures/2 Aomori.png" id="3_q0ja0"]
+[ext_resource type="Texture2D" uid="uid://5wgkchixki2g" path="res://assets/prefectures/3 Iwate.png" id="4_3orfu"]
+[ext_resource type="Theme" uid="uid://3xadrbsr8wki" path="res://ScoresTheme.tres" id="4_kb2j5"]
+[ext_resource type="Texture2D" uid="uid://cekfy8nsk2ytm" path="res://assets/WhiteBase.png" id="6_3orfu"]
+[ext_resource type="Texture2D" uid="uid://bagkqvtut3s24" path="res://assets/Paint battle ppt screenshot.png" id="7_4ewpg"]
+[ext_resource type="Texture2D" uid="uid://cu6ltgakv6f0p" path="res://assets/Japan kunitori water and dotted lines.png" id="11_kb2j5"]
+[ext_resource type="Texture2D" uid="uid://ddtjq0d3a673t" path="res://assets/Japan kunitori numbers.png" id="12_1utj6"]
+[ext_resource type="Texture2D" uid="uid://u362ckdks070" path="res://assets/Japan kunitori dotted lines.png" id="13_kb2j5"]
+[ext_resource type="Script" uid="uid://btjv0f0y7qo7s" path="res://prefecture_list.gd" id="14_eooia"]
+
+[sub_resource type="Gradient" id="Gradient_yu4rc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.00820203, 0.008202023, 0.00820202, 0.6666667)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ergn"]
+gradient = SubResource("Gradient_yu4rc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1utj6"]
+
+[sub_resource type="Gradient" id="Gradient_1oqwu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0.16862746, 0.5372549, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2cbkn"]
+gradient = SubResource("Gradient_1oqwu")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mq6b6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Scores" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1186.0
+offset_bottom = 484.0
+
+[node name="ScoresBG" type="TextureRect" parent="CanvasLayer/Scores"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 58.0
+offset_right = -343.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3ergn")
+
+[node name="ScoresText" type="RichTextLabel" parent="CanvasLayer/Scores"]
+layout_mode = 0
+offset_right = 844.0
+offset_bottom = 67.0
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 60
+text = "Scores"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Scores"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="RedScore" type="TextureButton" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(0.9019608, 0, 0, 1)
+material = SubResource("ShaderMaterial_1utj6")
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+theme = ExtResource("4_kb2j5")
+texture_normal = ExtResource("3_3ergn")
+texture_pressed = ExtResource("3_3ergn")
+texture_hover = ExtResource("3_3ergn")
+texture_focused = ExtResource("3_3ergn")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/RedScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlueScore" type="TextureRect" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+texture = ExtResource("3_3ergn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/BlueScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YellowScore" type="TextureRect" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(1, 1, 0, 1)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+texture = ExtResource("3_3ergn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/YellowScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GreenScore" type="TextureRect" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(0, 0.6862745, 0, 1)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+texture = ExtResource("3_3ergn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/GreenScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurpleScore" type="TextureRect" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(0.63529414, 0, 1, 1)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+texture = ExtResource("3_3ergn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/PurpleScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OrangeScore" type="TextureRect" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(1, 0.5411765, 0, 1)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+texture = ExtResource("3_3ergn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/OrangeScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LBLueScore" type="TextureRect" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(0, 1, 0.9411765, 1)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+texture = ExtResource("3_3ergn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/LBLueScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PinkScore" type="TextureRect" parent="CanvasLayer/Scores/GridContainer"]
+self_modulate = Color(0.98039216, 0.43137255, 1, 1)
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+texture = ExtResource("3_3ergn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/GridContainer/PinkScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/normal_font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 114.05947
+offset_top = -220.24445
+offset_right = -176.19641
+offset_bottom = 189.80737
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.475081
+scale = Vector2(1.1227, 1.1227)
+pivot_offset = Vector2(875, 800)
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Map"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_ptcrx")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_3orfu")
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Map"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_q0ja0")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_3orfu")
+
+[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/Map"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_3orfu")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_3orfu")
+
+[node name="FullMap" type="TextureRect" parent="CanvasLayer/Map"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_3orfu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TravelLines" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_kb2j5")
+
+[node name="ShallowWater" type="TextureRect" parent="CanvasLayer"]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_kb2j5")
+
+[node name="WaterBG" type="TextureRect" parent="CanvasLayer"]
+z_index = -200
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_2cbkn")
+
+[node name="PPT Version" type="TextureRect" parent="CanvasLayer"]
+visible = false
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_4ewpg")
+
+[node name="Numbers" type="TextureRect" parent="CanvasLayer"]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("12_1utj6")
+
+[node name="ResetButton" type="Button" parent="CanvasLayer"]
+offset_left = 872.0
+offset_top = 57.0
+offset_right = 998.0
+offset_bottom = 107.0
+text = "Reset"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -389.0
+offset_top = -367.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PrefectureList" type="HBoxContainer" parent="CanvasLayer/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_eooia")
+
+[node name="PrefList1" type="VBoxContainer" parent="CanvasLayer/TextureRect/PrefectureList"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect/PrefectureList/PrefList1"]
+layout_mode = 2
+
+[node name="PrefList2" type="VBoxContainer" parent="CanvasLayer/TextureRect/PrefectureList"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PrefList3" type="VBoxContainer" parent="CanvasLayer/TextureRect/PrefectureList"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="CanvasLayer/ResetButton" to="." method="_reset_colors"]

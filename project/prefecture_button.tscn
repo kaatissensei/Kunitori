@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://derroo0vm0gwq"]
+
+[ext_resource type="Script" uid="uid://dae4hn8t872dq" path="res://prefecture_btn.gd" id="1_17rw3"]
+
+[node name="PrefectureButton" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_17rw3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = 21.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
