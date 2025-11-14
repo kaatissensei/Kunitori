@@ -567,7 +567,6 @@ text = "No"
 unique_name_in_owner = true
 process_callback = 0
 one_shot = true
-ignore_time_scale = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 3
@@ -615,7 +614,6 @@ offset_right = 61.0
 offset_bottom = 135.0
 
 [node name="SettingsBtn" type="TextureButton" parent="CanvasLayer/SettingsBar"]
-visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 3
@@ -632,7 +630,6 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Fullscreen" type="TextureButton" parent="CanvasLayer"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 1
 anchor_left = 1.0
@@ -649,4 +646,3 @@ stretch_mode = 5
 [connection signal="timeout" from="CanvasLayer/Overlays/AnnouncementTimer" to="CanvasLayer/Overlays/Announcement" method="_fade_out"]
 [connection signal="pressed" from="CanvasLayer/SettingsBar/SettingsBtn" to="." method="_reset_colors"]
 [connection signal="pressed" from="CanvasLayer/SettingsBar/ResetBtn" to="." method="_open_reset_confirmation"]
-[connection signal="pressed" from="CanvasLayer/Fullscreen" to="." method="_fullscreen"]

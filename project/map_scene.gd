@@ -2,15 +2,19 @@ extends Node2D
 
 var COLOR_WHEEL = preload("res://color_picker_wheel.tscn")
 var color_wheel : Node
-var child_buffer = 4
-var default_pref_color = Color.DIM_GRAY
+var child_buffer : int = 4
+var default_pref_color : Color = Color.DIM_GRAY
+var fade_wait : float = 1.0
+var fade_duration : float = 1.0
 
 func _ready() -> void:
 	create_buttons()
 	adjust_buttons()
 	color_wheel = COLOR_WHEEL.instantiate()
+	color_wheel.change_color.connect(change_color)
 	color_wheel.visible = false
 	%CanvasLayer.add_child(color_wheel)
+	update_scores()
 
 #Create prefecture buttons
 func create_buttons():
@@ -39,10 +43,10 @@ func adjust_buttons():
 func _select_prefecture(pref_num :int) -> void:
 	#var pref_name : String
 	var prefecture : Node = %Map.get_child(pref_num - 1 + child_buffer)
-	print(prefecture.name)
+	
 	if (!Main.paused):
 		Main.paused = true
-		Main.selected_prefecture = prefecture
+		Main.select_prefecture(prefecture)
 		#Highlight selected prefecture
 		var highlight_shader = ShaderMaterial.new()
 		highlight_shader.shader = load("res://glow.gdshader")
@@ -55,7 +59,55 @@ func _select_prefecture(pref_num :int) -> void:
 		
 		#print(Main.get_prefecture_name(pref_num))
 
+func change_color(team_num :int):
+	var pref = Main.selected_prefecture
+	var pref_num = int(pref.name)
+	var pref_name = pref.name.replace("Btn", "").substr(str(pref_num).length())
+	var pref_color = Main.pref_colors[pref_num-1]
+	var old_team = 0
+	#If same color is chosen, turn gray
+	if team_num == pref_color:
+		team_num = 0
+	pref.material = null
+	pref.self_modulate = Main.COLORS[team_num]
+	if (Main.pref_colors[pref_num - 1] == 0): #If pref has no color
+		Main.scores[team_num - 1] += 1
+		%Announcement.text = "%s takes %s" % [Main.get_bbColor(team_num), pref_name]
+		%Announcement.announce()
+		print("Team %d takes %s!" % [team_num, pref_name])
+	elif (Main.pref_colors[pref_num-1] != team_num): #Confirm not selecting same color
+		old_team = Main.pref_colors[pref_num-1]
+		Main.pref_colors[pref_num - 1] = team_num
+		#Subtract 1pt from former team
+		Main.scores[old_team - 1] -= 1
+		if team_num != 0:
+			Main.scores[team_num - 1] += 1
+			%Announcement.text = "%s takes %s from %s" % [Main.get_bbColor(team_num), pref_name, Main.get_bbColor(old_team)]
+			%Announcement.announce()
+		print("Team %d takes %s from Team %d" % [team_num, pref_name, old_team])
+	##Display message
+	else:
+		print(Main.pref_colors)
+	
+	Main.set_color(pref_num, team_num)
+	update_scores()
+
+func update_scores():
+	for i in range(Main.numTeams):
+		%ScoreGrid.get_child(i).get_child(0).text = "%d" % Main.scores[i]
+
+func _open_reset_confirmation():
+	%ResetConfirmation.visible = true
+func _close_reset_confirmation():
+	%ResetConfirmation.visible = false
+
 func _reset_colors():
-	##WIP CONFIRMATION POPUP
 	for btn in get_tree().get_nodes_in_group("prefecture_buttons"):
 		btn.self_modulate = default_pref_color
+	Main.pref_colors.fill(0)
+	Main.scores.fill(0)
+	update_scores()
+	_close_reset_confirmation()
+
+func _fullscreen():
+	Main.fullscreen()
