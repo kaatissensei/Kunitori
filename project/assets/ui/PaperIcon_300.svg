@@ -1,0 +1,15 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="300" height="300">
+	<style>
+		.s0 { fill: none;stroke: #ffffff;stroke-linecap: round;stroke-linejoin: round;stroke-width: 20 } 
+		.s1 { fill: #ffffff } 
+	</style>
+	<g id="Paper">
+		<path id="Layer 3" fill-rule="evenodd" class="s0" d="m80 40h340c11.05 0 20 8.95 20 20v380c0 11.05-8.95 20-20 20h-340c-11.05 0-20-8.95-20-20v-380c0-11.05 8.95-20 20-20z"/>
+		<path id="Shape 10" fill-rule="evenodd" class="s1" d="m110 95h280c5.52 0 10 4.48 10 10v10c0 5.52-4.48 10-10 10h-280c-5.52 0-10-4.48-10-10v-10c0-5.52 4.48-10 10-10z"/>
+		<path id="Shape 10 copy" fill-rule="evenodd" class="s1" d="m110 151h280c5.52 0 10 4.48 10 10v10c0 5.52-4.48 10-10 10h-280c-5.52 0-10-4.48-10-10v-10c0-5.52 4.48-10 10-10z"/>
+		<path id="Shape 10 copy 2" fill-rule="evenodd" class="s1" d="m110 207h280c5.52 0 10 4.48 10 10v10c0 5.52-4.48 10-10 10h-280c-5.52 0-10-4.48-10-10v-10c0-5.52 4.48-10 10-10z"/>
+		<path id="Shape 10 copy 3" fill-rule="evenodd" class="s1" d="m110 263h280c5.52 0 10 4.48 10 10v10c0 5.52-4.48 10-10 10h-280c-5.52 0-10-4.48-10-10v-10c0-5.52 4.48-10 10-10z"/>
+		<path id="Shape 10 copy 4" fill-rule="evenodd" class="s1" d="m110 319h280c5.52 0 10 4.48 10 10v10c0 5.52-4.48 10-10 10h-280c-5.52 0-10-4.48-10-10v-10c0-5.52 4.48-10 10-10z"/>
+		<path id="Shape 10 copy 5" fill-rule="evenodd" class="s1" d="m110 375h280c5.52 0 10 4.48 10 10v10c0 5.52-4.48 10-10 10h-280c-5.52 0-10-4.48-10-10v-10c0-5.52 4.48-10 10-10z"/>
+	</g>
+</svg>
