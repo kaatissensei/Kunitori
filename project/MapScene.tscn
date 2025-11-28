@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://xvwmx62lwi2x"]
+[gd_scene load_steps=68 format=3 uid="uid://xvwmx62lwi2x"]
 
 [ext_resource type="Script" uid="uid://klc0ydqubjjk" path="res://map_scene.gd" id="1_mq6b6"]
 [ext_resource type="FontFile" uid="uid://cakqrch6dogsa" path="res://assets/Project Paintball Display.ttf" id="2_a8pdw"]
@@ -22,59 +22,180 @@
 [ext_resource type="Texture2D" uid="uid://p6qv8cocgl" path="res://assets/ui/SettingsGear.svg" id="16_pr6oa"]
 [ext_resource type="Script" uid="uid://u3bpmisp1xwp" path="res://announcement.gd" id="16_yqv3j"]
 [ext_resource type="Texture2D" uid="uid://diilaiwjdapst" path="res://assets/ui/uiBtnFullscreen_shadowed.png" id="18_pr6oa"]
+[ext_resource type="Texture2D" uid="uid://cv0hng86g6hrh" path="res://assets/ui/s2BtnTextureBordered.png" id="19_6lpvj"]
+[ext_resource type="Shader" uid="uid://bsyb4h3mdy61n" path="res://glow.gdshader" id="20_bkxd6"]
+[ext_resource type="Texture2D" uid="uid://cboeydpckhb8o" path="res://assets/ui/NumberedListIcon_300.png" id="20_hjnrb"]
+[ext_resource type="Texture2D" uid="uid://cpnp26rid17l5" path="res://assets/inklingBoy.png" id="21_lvdof"]
+[ext_resource type="Texture2D" uid="uid://pborcd532k73" path="res://assets/inklingBoy Colorless.png" id="22_nvpdb"]
+[ext_resource type="Texture2D" uid="uid://do37ji0qgdf4h" path="res://assets/inklingGirl.png" id="23_37uxb"]
+[ext_resource type="Texture2D" uid="uid://cs6i1vg503x5g" path="res://assets/inklingGirl Colorless.png" id="24_1fnan"]
+[ext_resource type="Theme" uid="uid://bvhrtd3sb0fo5" path="res://MainMenu.tres" id="27_5gl58"]
+[ext_resource type="Shader" uid="uid://bdj5ye1u83eib" path="res://rainbow.gdshader" id="30_nv4qw"]
+[ext_resource type="Texture2D" uid="uid://c6clsipe4hf7c" path="res://assets/WhiteBase_new.png" id="31_37uxb"]
 
 [sub_resource type="Gradient" id="Gradient_1oqwu"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0.16862746, 0.5372549, 1)
+colors = PackedColorArray(0, 0.16862746, 0.5372549, 1, 0, 0.08627451, 0.44705883, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2cbkn"]
 gradient = SubResource("Gradient_1oqwu")
+fill_to = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_yu4rc"]
-colors = PackedColorArray(0.00820203, 0.008202023, 0.00820202, 0.6666667, 0.00820203, 0.008202023, 0.00820202, 0.6666667)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gl58"]
+bg_color = Color(0.5411765, 0.5411765, 0.5411765, 0)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ergn"]
-gradient = SubResource("Gradient_yu4rc")
+[sub_resource type="Theme" id="Theme_nvpdb"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_5gl58")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv4qw"]
+bg_color = Color(0.35686275, 0.60784316, 0.8352941, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+
+[sub_resource type="Theme" id="Theme_37uxb"]
+Panel/styles/panel = SubResource("StyleBoxFlat_nv4qw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lpvj"]
+bg_color = Color(0.0023445897, 0.00234459, 0.00234459, 0.54509807)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_v42fa"]
+Panel/styles/panel = SubResource("StyleBoxFlat_6lpvj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1utj6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8pdw"]
-bg_color = Color(0.007843138, 0.007843138, 0.007843138, 0.6666667)
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.8980392)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkxd6"]
-bg_color = Color(0.047058824, 0.6862745, 0.05882353, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecdkt"]
+texture = ExtResource("3_m2yhe")
+region_rect = Rect2(0, 0, 1225, 620.311)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lpvj"]
-bg_color = Color(1, 0, 0, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hjnrb"]
+texture = ExtResource("19_6lpvj")
+modulate_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_1fnan"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wi3f"]
+bg_color = Color(0, 0, 0, 0.75686276)
+
+[sub_resource type="Theme" id="Theme_pr5uc"]
+Panel/styles/panel = SubResource("StyleBoxFlat_3wi3f")
+
+[sub_resource type="Theme" id="Theme_nv4qw"]
+
+[sub_resource type="Gradient" id="Gradient_37uxb"]
+offsets = PackedFloat32Array(0, 0.62204725, 0.80839896, 0.84313726, 0.8551237, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 0.99977666, 0.20120996, 0.14993584, 1, 1, 0, 0, 1, 1, 0.23137255, 0.23137255, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1fnan"]
+gradient = SubResource("Gradient_37uxb")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_ecdkt"]
+offsets = PackedFloat32Array(0, 0.62204725, 0.80839896, 0.84313726, 0.8515901, 1)
+colors = PackedColorArray(0.8627451, 0, 0, 1, 0.8627451, 0, 0, 1, 0.97538847, 0.002662593, 0.0014614421, 1, 1, 0, 0, 1, 1, 0.23137255, 0.23137255, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5gl58"]
+gradient = SubResource("Gradient_ecdkt")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjnrb"]
+bg_color = Color(0.10028375, 0.10015773, 0.20219931, 0.61960787)
 
 [sub_resource type="Theme" id="Theme_pr6oa"]
+Panel/styles/panel = SubResource("StyleBoxFlat_hjnrb")
 
-[sub_resource type="Gradient" id="Gradient_a8pdw"]
-colors = PackedColorArray(0, 0, 0, 0.28235295, 1, 1, 1, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjnrb"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wk82b"]
-gradient = SubResource("Gradient_a8pdw")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lpvj"]
+shader = ExtResource("20_bkxd6")
+shader_parameter/thickness = 4.00000019
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/border_clipping_fix = false
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(-2, -2)
+shader_parameter/max_or_add = false
+
+[sub_resource type="Theme" id="Theme_hjnrb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v42fa"]
+shader = ExtResource("20_bkxd6")
+shader_parameter/thickness = 1.8000000855
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/border_clipping_fix = false
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(-2, -2)
+shader_parameter/max_or_add = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v42fa"]
+bg_color = Color(0.13725491, 0.13725491, 0.22745098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.08563072, 0.08560116, 0.15195826, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_ecdkt"]
+Panel/styles/panel = SubResource("StyleBoxFlat_v42fa")
+
+[sub_resource type="Gradient" id="Gradient_nvpdb"]
+colors = PackedColorArray(0.10980392, 0.10980392, 0.23137255, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nv4qw"]
+gradient = SubResource("Gradient_nvpdb")
 fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v42fa"]
+texture = SubResource("GradientTexture2D_nv4qw")
+
+[sub_resource type="Theme" id="Theme_5gl58"]
+Panel/styles/panel = SubResource("StyleBoxTexture_v42fa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fnan"]
+shader = ExtResource("30_nv4qw")
+shader_parameter/strength = 1.0
+shader_parameter/speed = 0.10000000475
+shader_parameter/angle = 270.000012825
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecdkt"]
+bg_color = Color(0.13333334, 0.13333334, 0.13333334, 0.93333334)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_lvdof"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ecdkt")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_mq6b6")
@@ -216,47 +337,71 @@ texture = ExtResource("6_3orfu")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Scores" type="Control" parent="CanvasLayer"]
+[node name="Scores" type="PanelContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
 offset_left = 119.0
-offset_top = 18.0
+offset_top = 30.0
 offset_right = 946.0
 offset_bottom = 490.0
+theme = SubResource("Theme_nvpdb")
 script = ExtResource("2_ftdwh")
 
-[node name="ScoresBG" type="TextureRect" parent="CanvasLayer/Scores"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Scores"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ScoresHeading" type="Panel" parent="CanvasLayer/Scores/VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_37uxb")
+
+[node name="ScoresText" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresHeading"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 0
+offset_right = 827.0
+offset_bottom = 65.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9
+theme = ExtResource("2_yu4rc")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 60
+text = "Scores"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoresBG" type="Panel" parent="CanvasLayer/Scores/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+theme = SubResource("Theme_v42fa")
+
+[node name="ScoreGrid" type="GridContainer" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 71.0
+offset_left = 13.5
+offset_top = 2.5
+offset_right = -13.5
+offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_3ergn")
-
-[node name="ScoreGrid" type="GridContainer" parent="CanvasLayer/Scores/ScoresBG"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -406.0
-offset_top = -202.0
-offset_right = 406.0
-offset_bottom = 202.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 4
 
-[node name="RedScore" type="TextureButton" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="RedScore" type="TextureButton" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(0.9019608, 0, 0, 1)
 material = SubResource("ShaderMaterial_1utj6")
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("4_kb2j5")
 texture_normal = ExtResource("3_3ergn")
 texture_pressed = ExtResource("3_3ergn")
@@ -264,7 +409,7 @@ texture_hover = ExtResource("3_3ergn")
 texture_focused = ExtResource("3_3ergn")
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/RedScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/RedScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,21 +419,25 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BlueScore" type="TextureRect" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="BlueScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/BlueScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/BlueScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -298,21 +447,25 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="YellowScore" type="TextureRect" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="YellowScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(1, 1, 0, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/YellowScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/YellowScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -322,21 +475,25 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GreenScore" type="TextureRect" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="GreenScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(0, 0.6862745, 0, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/GreenScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/GreenScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -346,21 +503,25 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PurpleScore" type="TextureRect" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="PurpleScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(0.63529414, 0, 1, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/PurpleScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/PurpleScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -370,21 +531,25 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OrangeScore" type="TextureRect" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="OrangeScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(1, 0.5411765, 0, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/OrangeScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/OrangeScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -394,21 +559,25 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LBLueScore" type="TextureRect" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="LBLueScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(0, 1, 0.9411765, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/LBLueScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/LBLueScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -418,21 +587,25 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PinkScore" type="TextureRect" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid"]
+[node name="PinkScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid"]
 self_modulate = Color(0.98039216, 0.43137255, 1, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/ScoresBG/ScoreGrid/PinkScore"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/PinkScore"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -442,19 +615,12 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yu4rc")
-theme_override_constants/outline_size = 15
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 65
 text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScoresText" type="RichTextLabel" parent="CanvasLayer/Scores"]
-layout_mode = 0
-offset_right = 844.0
-offset_bottom = 67.0
-theme = ExtResource("2_yu4rc")
-theme_override_font_sizes/normal_font_size = 60
-text = "Scores"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -486,7 +652,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("16_yqv3j")
 
-[node name="ResetConfirmation" type="TextureRect" parent="CanvasLayer/Overlays"]
+[node name="ResetConfirmation" type="Panel" parent="CanvasLayer/Overlays"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -501,8 +667,7 @@ offset_right = 442.0
 offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_m2yhe")
-expand_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_ecdkt")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Overlays/ResetConfirmation"]
 layout_mode = 1
@@ -550,7 +715,6 @@ size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 theme = ExtResource("4_yqv3j")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_bkxd6")
 text = "Yes"
 
 [node name="No" type="Button" parent="CanvasLayer/Overlays/ResetConfirmation/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
@@ -560,8 +724,20 @@ size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 theme = ExtResource("4_yqv3j")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_6lpvj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hjnrb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hjnrb")
 text = "No"
+
+[node name="bgDouble" type="Panel" parent="CanvasLayer/Overlays/ResetConfirmation"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1fnan")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ecdkt")
 
 [node name="AnnouncementTimer" type="Timer" parent="CanvasLayer/Overlays"]
 unique_name_in_owner = true
@@ -569,7 +745,183 @@ process_callback = 0
 one_shot = true
 ignore_time_scale = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="PrefListBtn" type="TextureButton" parent="CanvasLayer/Overlays"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("20_hjnrb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AttackOverlay" type="Panel" parent="CanvasLayer/Overlays"]
+unique_name_in_owner = true
+visible = false
+z_index = 50
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -205.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pr5uc")
+
+[node name="AttackHBox" type="Control" parent="CanvasLayer/Overlays/AttackOverlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InklingLeft" type="TextureButton" parent="CanvasLayer/Overlays/AttackOverlay/AttackHBox" groups=["attackBtns"]]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -205.0
+offset_right = -259.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("21_lvdof")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="InklingLeftColor" type="TextureRect" parent="CanvasLayer/Overlays/AttackOverlay/AttackHBox/InklingLeft"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_nvpdb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AttackBtnMargin" type="MarginContainer" parent="CanvasLayer/Overlays/AttackOverlay/AttackHBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.5
+offset_top = -205.0
+offset_right = 256.5
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 50
+
+[node name="AttackBtn" type="TextureButton" parent="CanvasLayer/Overlays/AttackOverlay/AttackHBox/AttackBtnMargin" groups=["attackBtns"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_nv4qw")
+texture_normal = SubResource("GradientTexture2D_1fnan")
+texture_pressed = SubResource("GradientTexture2D_5gl58")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Overlays/AttackOverlay/AttackHBox/AttackBtnMargin/AttackBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_yu4rc")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 70
+text = "Attack!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InklingRight" type="TextureButton" parent="CanvasLayer/Overlays/AttackOverlay/AttackHBox" groups=["attackBtns"]]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 250.0
+offset_top = -205.0
+offset_right = 592.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("23_37uxb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="InklingRightColor" type="TextureRect" parent="CanvasLayer/Overlays/AttackOverlay/AttackHBox/InklingRight"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_1fnan")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AttackAnnouncement" type="RichTextLabel" parent="CanvasLayer/Overlays/AttackOverlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -89.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 30
+theme_override_fonts/normal_font = ExtResource("2_a8pdw")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8pdw")
+bbcode_enabled = true
+text = "[color=orange]Orange[/color] attacks Light Blue!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrefectureListTop" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -580,9 +932,8 @@ offset_top = -367.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_pr6oa")
-texture = SubResource("GradientTexture2D_wk82b")
 
-[node name="PrefectureList" type="HBoxContainer" parent="CanvasLayer/TextureRect"]
+[node name="PrefectureList" type="HBoxContainer" parent="CanvasLayer/PrefectureListTop"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -595,35 +946,50 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("14_eooia")
 
-[node name="PrefList1" type="VBoxContainer" parent="CanvasLayer/TextureRect/PrefectureList"]
+[node name="PrefList1" type="VBoxContainer" parent="CanvasLayer/PrefectureListTop/PrefectureList"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="PrefList2" type="VBoxContainer" parent="CanvasLayer/TextureRect/PrefectureList"]
+[node name="PrefList2" type="VBoxContainer" parent="CanvasLayer/PrefectureListTop/PrefectureList"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="PrefList3" type="VBoxContainer" parent="CanvasLayer/TextureRect/PrefectureList"]
+[node name="PrefList3" type="VBoxContainer" parent="CanvasLayer/PrefectureListTop/PrefectureList"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/PrefectureListTop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hjnrb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hjnrb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hjnrb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hjnrb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hjnrb")
 
 [node name="SettingsBar" type="VBoxContainer" parent="CanvasLayer"]
 offset_right = 61.0
 offset_bottom = 135.0
 
 [node name="SettingsBtn" type="TextureButton" parent="CanvasLayer/SettingsBar"]
-visible = false
+material = SubResource("ShaderMaterial_6lpvj")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_hjnrb")
 texture_normal = ExtResource("16_pr6oa")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="ResetBtn" type="TextureButton" parent="CanvasLayer/SettingsBar"]
+material = SubResource("ShaderMaterial_v42fa")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 3
@@ -644,9 +1010,339 @@ texture_normal = ExtResource("18_pr6oa")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Settings" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+z_index = 100
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.0
+offset_top = -199.0
+offset_right = 586.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ecdkt")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("2_a8pdw")
+theme_override_font_sizes/normal_font_size = 80
+text = "Number of Teams"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="numTeamSlider" type="HSlider" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("4_yqv3j")
+min_value = 2.0
+max_value = 8.0
+value = 8.0
+rounded = true
+tick_count = 7
+ticks_on_borders = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = 40.0
+offset_right = 55.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" type="Label" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_a8pdw")
+theme_override_font_sizes/font_size = 60
+text = "2"
+horizontal_alignment = 1
+
+[node name="3" type="Label" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_a8pdw")
+theme_override_font_sizes/font_size = 60
+text = "3"
+horizontal_alignment = 1
+
+[node name="4" type="Label" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_a8pdw")
+theme_override_font_sizes/font_size = 60
+text = "4"
+horizontal_alignment = 1
+
+[node name="5" type="Label" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_a8pdw")
+theme_override_font_sizes/font_size = 60
+text = "5"
+horizontal_alignment = 1
+
+[node name="6" type="Label" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_a8pdw")
+theme_override_font_sizes/font_size = 60
+text = "6"
+horizontal_alignment = 1
+
+[node name="7" type="Label" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_a8pdw")
+theme_override_font_sizes/font_size = 60
+text = "7"
+horizontal_alignment = 1
+
+[node name="8" type="Label" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_a8pdw")
+theme_override_font_sizes/font_size = 60
+text = "8"
+horizontal_alignment = 1
+
+[node name="Buffer" type="Control" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OK" type="Button" parent="CanvasLayer/Settings/MarginContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_yqv3j")
+text = "OK"
+
+[node name="MainMenu" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5gl58")
+
+[node name="RainbowJapan" type="TextureRect" parent="CanvasLayer/MainMenu"]
+material = SubResource("ShaderMaterial_1fnan")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -442.2876
+offset_top = -899.58044
+offset_right = 932.6941
+offset_bottom = 457.94116
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.37625512
+texture = ExtResource("31_37uxb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Kunitori1" type="RichTextLabel" parent="CanvasLayer/MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -446.0
+offset_right = -351.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_5gl58")
+theme_override_font_sizes/normal_font_size = 250
+text = "Kunitori"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorBattle1" type="RichTextLabel" parent="CanvasLayer/MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -351.0
+offset_top = 316.0
+offset_right = -351.0
+offset_bottom = -626.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_5gl58")
+theme_override_font_sizes/normal_font_size = 100
+text = "Color Battle for Japan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Kunitori2" type="RichTextLabel" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -368.0
+offset_top = -437.0
+offset_right = -368.0
+offset_bottom = -335.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_5gl58")
+theme_override_font_sizes/normal_font_size = 80
+text = "Kunitori"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorBattle2" type="RichTextLabel" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -351.0
+offset_top = 151.0
+offset_right = -351.0
+offset_bottom = -501.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("27_5gl58")
+theme_override_font_sizes/normal_font_size = 180
+text = "Color Battle
+for Japan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 329.0
+offset_top = 816.0
+offset_right = 907.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartBtn" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_yu4rc")
+theme_override_font_sizes/font_size = 100
+text = "Start!"
+
+[node name="Credits" type="Panel" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -86.0
+offset_right = -967.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_lvdof")
+
+[node name="CreditsText" type="RichTextLabel" parent="CanvasLayer/MainMenu/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Adapted from Nagaoka Mike's [url=\"https://www.altopedia.net/activities/991-paint-battle-for-japan\" ][color=blue]Paint Battle for Japan[/color][/url].
+Special thanks to Celestar129 for [url=\"https://www.altopedia.net/activities/3283-splatoon-turf-takeover\"][color=blue]their amazing question sheets.[/color][/url]"
+
 [connection signal="pressed" from="CanvasLayer/Overlays/ResetConfirmation/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Yes" to="." method="_reset_colors"]
 [connection signal="pressed" from="CanvasLayer/Overlays/ResetConfirmation/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/No" to="." method="_close_reset_confirmation"]
 [connection signal="timeout" from="CanvasLayer/Overlays/AnnouncementTimer" to="CanvasLayer/Overlays/Announcement" method="_fade_out"]
-[connection signal="pressed" from="CanvasLayer/SettingsBar/SettingsBtn" to="." method="_reset_colors"]
+[connection signal="pressed" from="CanvasLayer/Overlays/PrefListBtn" to="CanvasLayer/PrefectureListTop/PrefectureList" method="_show_prefecture_list"]
+[connection signal="pressed" from="CanvasLayer/Overlays/AttackOverlay/AttackHBox/AttackBtnMargin/AttackBtn" to="." method="_attack"]
+[connection signal="pressed" from="CanvasLayer/PrefectureListTop/Button" to="CanvasLayer/PrefectureListTop/PrefectureList" method="_hide_prefecture_list"]
+[connection signal="pressed" from="CanvasLayer/SettingsBar/SettingsBtn" to="." method="_show_settings"]
 [connection signal="pressed" from="CanvasLayer/SettingsBar/ResetBtn" to="." method="_open_reset_confirmation"]
 [connection signal="pressed" from="CanvasLayer/Fullscreen" to="." method="_fullscreen"]
+[connection signal="value_changed" from="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider" to="." method="_change_num_teams"]
+[connection signal="pressed" from="CanvasLayer/Settings/MarginContainer/OK" to="." method="_hide_settings"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/StartBtn" to="." method="_start_game"]

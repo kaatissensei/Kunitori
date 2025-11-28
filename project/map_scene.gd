@@ -7,6 +7,9 @@ var default_pref_color : Color = Color.DIM_GRAY
 var fade_wait : float = 1.0
 var fade_duration : float = 1.0
 
+var attacker_num : int = 0
+var defender_num : int = 0
+
 func _ready() -> void:
 	create_buttons()
 	adjust_buttons()
@@ -63,27 +66,24 @@ func change_color(team_num :int):
 	var pref = Main.selected_prefecture
 	var pref_num = int(pref.name)
 	var pref_name = pref.name.replace("Btn", "").substr(str(pref_num).length())
-	var pref_color = Main.pref_colors[pref_num-1]
 	var old_team = 0
-	#If same color is chosen, turn gray
-	if team_num == pref_color:
-		team_num = 0
-	pref.material = null
-	pref.self_modulate = Main.COLORS[team_num]
+	
 	if (Main.pref_colors[pref_num - 1] == 0): #If pref has no color
+		var pref_color = Main.pref_colors[pref_num-1]
+		#If same color is chosen, turn gray
+		if team_num == pref_color:
+			team_num = 0
+		pref.material = null
+		pref.self_modulate = Main.COLORS[team_num]
+		
 		Main.scores[team_num - 1] += 1
-		%Announcement.text = "%s takes %s" % [Main.get_bbColor(team_num), pref_name]
+		%Announcement.text = "%s takes %s (%d)" % [Main.get_bbColor(team_num), pref_name, pref_num]
 		%Announcement.announce()
 		print("Team %d takes %s!" % [team_num, pref_name])
 	elif (Main.pref_colors[pref_num-1] != team_num): #Confirm not selecting same color
 		old_team = Main.pref_colors[pref_num-1]
-		Main.pref_colors[pref_num - 1] = team_num
-		#Subtract 1pt from former team
-		Main.scores[old_team - 1] -= 1
-		if team_num != 0:
-			Main.scores[team_num - 1] += 1
-			%Announcement.text = "%s takes %s from %s" % [Main.get_bbColor(team_num), pref_name, Main.get_bbColor(old_team)]
-			%Announcement.announce()
+		_ready_attack(old_team, team_num)
+
 		print("Team %d takes %s from Team %d" % [team_num, pref_name, old_team])
 	##Display message
 	else:
@@ -111,3 +111,115 @@ func _reset_colors():
 
 func _fullscreen():
 	Main.fullscreen()
+
+
+func _change_num_teams(number: float) -> void:
+	Main.numTeams = number
+	for i in range(1, 8):
+		if i < Main.numTeams:
+			%ScoreGrid.get_child(i).visible = true
+		else:
+			%ScoreGrid.get_child(i).visible = false
+
+
+func _show_settings() -> void:
+	%Settings.visible = true
+
+func _hide_settings() -> void:
+	%Settings.visible = false
+
+
+func _start_game() -> void:
+	%MainMenu.visible = false
+	%Settings.visible = true
+
+
+func _ready_attack(def_num: int, atk_num: int) -> void:
+	defender_num = def_num
+	attacker_num = atk_num
+	##WIP MAKE BUTTON GROUP
+	%AttackOverlay.visible = true
+	%AttackBtn.visible = true
+	%AttackBtn.get_parent().visible = true
+	%InklingLeftColor.get_parent().visible = true
+	%InklingRightColor.get_parent().visible = true
+	%InklingLeftColor.self_modulate = Main.COLORS[attacker_num]
+	%InklingRightColor.self_modulate = Main.COLORS[defender_num]
+	%AttackAnnouncement.text = "%s attacks %s!" % [Main.get_bbColor(attacker_num), Main.get_bbColor(defender_num)]
+
+func is_attack_successful():
+	var ias =  randf()
+	print(ias)
+	return ias > 0.5
+
+func _attack() -> void:
+	if is_attack_successful():
+		#Briefly change attackBtn to OK
+		select_victor(attacker_num)
+		pass
+	else:
+		#Briefly change attackBtn to No
+		select_victor(defender_num)
+		pass
+
+func select_victor(winner_num: int):
+	var pref = Main.selected_prefecture
+	var pref_num = Main.selected_pref_num
+	var pref_name = Main.get_prefecture_name(pref_num)
+	
+	await play_attack_animation(winner_num == attacker_num)
+	
+	%AttackOverlay.visible = false
+	
+	Main.pref_colors[pref_num - 1] = winner_num
+	
+	#Check if winner was attacker (or defender)
+	if winner_num == attacker_num:
+		#Change pref color
+		pref.material = null
+		pref.self_modulate = Main.COLORS[winner_num]
+		
+		#Set value in pref_colors
+		Main.pref_colors[pref_num] = winner_num
+		#Subtract 1pt from former team
+		Main.scores[defender_num - 1] -= 1
+		Main.scores[winner_num - 1] += 1
+		update_scores()
+		
+		%Announcement.text = "%s takes %s (%d) from %s" % [Main.get_bbColor(winner_num), pref_name, pref_num,
+		Main.get_bbColor(defender_num)]
+		%Announcement.announce()
+		
+	else:
+		pref.material = null
+		%Announcement.text = "%s keeps %s (%d)!" % [Main.get_bbColor(defender_num), pref_name, pref_num]
+		%Announcement.announce()
+
+func play_attack_animation(left_wins: bool):
+	var tween = create_tween()
+	var time : float = 0.5
+	var winner_text : String
+	
+	%AttackBtn.get_parent().visible = false
+	tween.tween_property(%InklingLeft, "position:x", -800,time).from(-600)
+	tween.set_parallel()
+	await tween.tween_property(%InklingRight, "position:x", 450,time).from(250).finished
+	tween.kill()
+	
+	tween = create_tween()
+	tween.tween_property(%InklingLeft, "position:x", -170,time)
+	tween.set_parallel()
+	tween.tween_property(%InklingRight, "position:x", -170,time)
+	await get_tree().create_timer(time * .9).timeout
+	tween.kill()
+	
+	if left_wins:
+		winner_text = Main.get_bbColor(attacker_num)
+		%InklingRightColor.get_parent().visible = false
+	else:
+		winner_text = Main.get_bbColor(defender_num)
+		%InklingLeftColor.get_parent().visible = false
+	
+	%AttackAnnouncement.text = "%s wins!" % winner_text
+		
+	await get_tree().create_timer(2.0).timeout
