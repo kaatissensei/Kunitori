@@ -144,13 +144,13 @@ func _ready_attack(def_num: int, atk_num: int) -> void:
 	%InklingLeftColor.get_parent().visible = true
 	%InklingRightColor.get_parent().visible = true
 	%InklingLeftColor.self_modulate = Main.COLORS[attacker_num]
+	%InklingLeft.position.x = -600
 	%InklingRightColor.self_modulate = Main.COLORS[defender_num]
+	%InklingRight.position.x = 250
 	%AttackAnnouncement.text = "%s attacks %s!" % [Main.get_bbColor(attacker_num), Main.get_bbColor(defender_num)]
 
 func is_attack_successful():
-	var ias =  randf()
-	print(ias)
-	return ias > 0.5
+	return randf() > 0.5
 
 func _attack() -> void:
 	if is_attack_successful():
@@ -222,4 +222,4 @@ func play_attack_animation(left_wins: bool):
 	
 	%AttackAnnouncement.text = "%s wins!" % winner_text
 		
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.2).timeout
