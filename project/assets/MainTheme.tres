@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://gos5p5rd6tpp"]
+
+[ext_resource type="FontFile" uid="uid://cakqrch6dogsa" path="res://assets/Project Paintball Display.ttf" id="1_4as0w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4as0w"]
+bg_color = Color(5.0537287e-06, 0.6952855, 0.17540807, 0.9843137)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfn4m"]
+bg_color = Color(0, 0.67058825, 0.16862746, 0.9843137)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhag5"]
+bg_color = Color(2.117753e-06, 0.83807635, 0.22024637, 0.9843137)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[resource]
+default_font_size = 32
+Button/constants/outline_size = 20
+Button/fonts/font = ExtResource("1_4as0w")
+Button/styles/focus = SubResource("StyleBoxFlat_4as0w")
+Button/styles/hover = SubResource("StyleBoxFlat_rfn4m")
+Button/styles/normal = SubResource("StyleBoxFlat_4as0w")
+Button/styles/pressed = SubResource("StyleBoxFlat_yhag5")
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("1_4as0w")
