@@ -1328,12 +1328,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
 offset_top = -3.0
-offset_right = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "Adapted from Nagaoka Mike's [url=\"https://www.altopedia.net/activities/991-paint-battle-for-japan\" ][color=blue]Paint Battle for Japan[/color][/url].
+text = "Adapted from Nagaoka Mike's [url=\"https://www.altopedia.net/activities/991-paint-battle-for-japan\"][color=blue]Paint Battle for Japan[/color][/url].
 Special thanks to Celestar129 for [url=\"https://www.altopedia.net/activities/3283-splatoon-turf-takeover\"][color=blue]their amazing question sheets.[/color][/url]"
 
 [connection signal="pressed" from="CanvasLayer/Overlays/ResetConfirmation/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Yes" to="." method="_reset_colors"]
@@ -1350,3 +1349,4 @@ Special thanks to Celestar129 for [url=\"https://www.altopedia.net/activities/32
 [connection signal="value_changed" from="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider" to="." method="_change_num_teams"]
 [connection signal="pressed" from="CanvasLayer/Settings/MarginContainer/OK" to="." method="_hide_settings"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/StartBtn" to="." method="_start_game"]
+[connection signal="meta_clicked" from="CanvasLayer/MainMenu/Credits/CreditsText" to="." method="_on_credits_text_meta_clicked"]

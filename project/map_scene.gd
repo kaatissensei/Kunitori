@@ -238,3 +238,7 @@ func play_attack_animation(left_wins: bool):
 	%AttackAnnouncement.text = "%s wins!" % winner_text
 		
 	await get_tree().create_timer(1.2).timeout
+
+
+func _on_credits_text_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(str(meta))
