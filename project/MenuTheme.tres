@@ -27,6 +27,7 @@ Button/font_sizes/font_size = 60
 Button/fonts/font = ExtResource("1_xf8wu")
 Button/styles/focus = SubResource("StyleBoxTexture_qju8s")
 Button/styles/hover = SubResource("StyleBoxTexture_qju8s")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_qju8s")
 Button/styles/normal = SubResource("StyleBoxTexture_c2tco")
 Button/styles/pressed = SubResource("StyleBoxTexture_qju8s")
 HSlider/icons/grabber = ExtResource("3_c2tco")

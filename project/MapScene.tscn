@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://xvwmx62lwi2x"]
+[gd_scene load_steps=69 format=3 uid="uid://xvwmx62lwi2x"]
 
 [ext_resource type="Script" uid="uid://klc0ydqubjjk" path="res://map_scene.gd" id="1_mq6b6"]
 [ext_resource type="FontFile" uid="uid://cakqrch6dogsa" path="res://assets/Project Paintball Display.ttf" id="2_a8pdw"]
@@ -71,15 +71,30 @@ Panel/styles/panel = SubResource("StyleBoxFlat_6lpvj")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8pdw"]
 bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.8980392)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecdkt"]
-texture = ExtResource("3_m2yhe")
-region_rect = Rect2(0, 0, 1225, 620.311)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v42fa"]
+bg_color = Color(0.13725491, 0.13725491, 0.22745098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.08563072, 0.08560116, 0.15195826, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_3wi3f"]
+Panel/styles/panel = SubResource("StyleBoxFlat_v42fa")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hjnrb"]
 texture = ExtResource("19_6lpvj")
 modulate_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_1fnan"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecdkt"]
+texture = ExtResource("3_m2yhe")
+region_rect = Rect2(0, 0, 1225, 620.311)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wi3f"]
 bg_color = Color(0, 0, 0, 0.75686276)
@@ -146,18 +161,6 @@ shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
 shader_parameter/offset = Vector2(-2, -2)
 shader_parameter/max_or_add = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v42fa"]
-bg_color = Color(0.13725491, 0.13725491, 0.22745098, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.08563072, 0.08560116, 0.15195826, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [sub_resource type="Theme" id="Theme_ecdkt"]
 Panel/styles/panel = SubResource("StyleBoxFlat_v42fa")
@@ -667,7 +670,7 @@ offset_right = 442.0
 offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ecdkt")
+theme = SubResource("Theme_3wi3f")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Overlays/ResetConfirmation"]
 layout_mode = 1
@@ -726,9 +729,12 @@ theme = ExtResource("4_yqv3j")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hjnrb")
 theme_override_styles/hover = SubResource("StyleBoxTexture_hjnrb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_hjnrb")
+theme_override_styles/focus = SubResource("StyleBoxTexture_hjnrb")
 text = "No"
 
 [node name="bgDouble" type="Panel" parent="CanvasLayer/Overlays/ResetConfirmation"]
+visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -985,6 +991,7 @@ material = SubResource("ShaderMaterial_6lpvj")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_hjnrb")
 texture_normal = ExtResource("16_pr6oa")
 ignore_texture_size = true
@@ -995,6 +1002,7 @@ material = SubResource("ShaderMaterial_v42fa")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("15_tltn3")
 ignore_texture_size = true
 stretch_mode = 5
