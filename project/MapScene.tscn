@@ -736,6 +736,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_1fnan")
 theme_override_styles/panel = SubResource("StyleBoxTexture_ecdkt")
 
@@ -805,6 +806,7 @@ offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("21_lvdof")
 ignore_texture_size = true
 stretch_mode = 5
@@ -1338,7 +1340,9 @@ Special thanks to Celestar129 for [url=\"https://www.altopedia.net/activities/32
 [connection signal="pressed" from="CanvasLayer/Overlays/ResetConfirmation/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/No" to="." method="_close_reset_confirmation"]
 [connection signal="timeout" from="CanvasLayer/Overlays/AnnouncementTimer" to="CanvasLayer/Overlays/Announcement" method="_fade_out"]
 [connection signal="pressed" from="CanvasLayer/Overlays/PrefListBtn" to="CanvasLayer/PrefectureListTop/PrefectureList" method="_show_prefecture_list"]
+[connection signal="pressed" from="CanvasLayer/Overlays/AttackOverlay/AttackHBox/InklingLeft" to="." method="_left_wins"]
 [connection signal="pressed" from="CanvasLayer/Overlays/AttackOverlay/AttackHBox/AttackBtnMargin/AttackBtn" to="." method="_attack"]
+[connection signal="pressed" from="CanvasLayer/Overlays/AttackOverlay/AttackHBox/InklingRight" to="." method="_right_wins"]
 [connection signal="pressed" from="CanvasLayer/PrefectureListTop/Button" to="CanvasLayer/PrefectureListTop/PrefectureList" method="_hide_prefecture_list"]
 [connection signal="pressed" from="CanvasLayer/SettingsBar/SettingsBtn" to="." method="_show_settings"]
 [connection signal="pressed" from="CanvasLayer/SettingsBar/ResetBtn" to="." method="_open_reset_confirmation"]

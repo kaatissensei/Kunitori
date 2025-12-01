@@ -79,15 +79,23 @@ func change_color(team_num :int):
 		Main.scores[team_num - 1] += 1
 		%Announcement.text = "%s takes %s (%d)" % [Main.get_bbColor(team_num), pref_name, pref_num]
 		%Announcement.announce()
-		print("Team %d takes %s!" % [team_num, pref_name])
+		#print("Team %d takes %s!" % [team_num, pref_name])
+	elif (Main.pref_colors[pref_num-1] == team_num):
+		#Turn back to gray
+		old_team = Main.pref_colors[pref_num-1]
+		team_num = 0
+		pref.material = null
+		pref.self_modulate = Main.COLORS[0]
+		Main.scores[old_team-1] -= 1
 	elif (Main.pref_colors[pref_num-1] != team_num): #Confirm not selecting same color
 		old_team = Main.pref_colors[pref_num-1]
 		_ready_attack(old_team, team_num)
 
-		print("Team %d takes %s from Team %d" % [team_num, pref_name, old_team])
+		#print("Team %d takes %s from Team %d" % [team_num, pref_name, old_team])
 	##Display message
 	else:
-		print(Main.pref_colors)
+		pass
+		#print(Main.pref_colors)
 	
 	Main.set_color(pref_num, team_num)
 	update_scores()
@@ -162,6 +170,11 @@ func _attack() -> void:
 		select_victor(defender_num)
 		pass
 
+func _right_wins():
+	select_victor(defender_num)
+func _left_wins():
+	select_victor(attacker_num)
+
 func select_victor(winner_num: int):
 	var pref = Main.selected_prefecture
 	var pref_num = Main.selected_pref_num
@@ -180,7 +193,7 @@ func select_victor(winner_num: int):
 		pref.self_modulate = Main.COLORS[winner_num]
 		
 		#Set value in pref_colors
-		Main.pref_colors[pref_num] = winner_num
+		Main.pref_colors[pref_num-1] = winner_num
 		#Subtract 1pt from former team
 		Main.scores[defender_num - 1] -= 1
 		Main.scores[winner_num - 1] += 1
@@ -200,17 +213,19 @@ func play_attack_animation(left_wins: bool):
 	var time : float = 0.5
 	var winner_text : String
 	
+	#Move Inklings back
 	%AttackBtn.get_parent().visible = false
 	tween.tween_property(%InklingLeft, "position:x", -800,time).from(-600)
 	tween.set_parallel()
 	await tween.tween_property(%InklingRight, "position:x", 450,time).from(250).finished
 	tween.kill()
 	
+	#Inklings rush towards each other
 	tween = create_tween()
-	tween.tween_property(%InklingLeft, "position:x", -170,time)
+	tween.tween_property(%InklingLeft, "position:x", -170,time * 0.8)
 	tween.set_parallel()
-	tween.tween_property(%InklingRight, "position:x", -170,time)
-	await get_tree().create_timer(time * .9).timeout
+	tween.tween_property(%InklingRight, "position:x", -170,time * 0.8)
+	await get_tree().create_timer(time * .7).timeout
 	tween.kill()
 	
 	if left_wins:
