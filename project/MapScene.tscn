@@ -166,7 +166,7 @@ shader_parameter/max_or_add = false
 Panel/styles/panel = SubResource("StyleBoxFlat_v42fa")
 
 [sub_resource type="Gradient" id="Gradient_nvpdb"]
-colors = PackedColorArray(0.10980392, 0.10980392, 0.23137255, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.13788459, 0.13794142, 0.27976337, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nv4qw"]
 gradient = SubResource("Gradient_nvpdb")

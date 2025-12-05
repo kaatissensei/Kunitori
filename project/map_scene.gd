@@ -6,6 +6,7 @@ var child_buffer : int = 4
 var default_pref_color : Color = Color.DIM_GRAY
 var fade_wait : float = 1.0
 var fade_duration : float = 1.0
+var tween
 
 var attacker_num : int = 0
 var defender_num : int = 0
@@ -209,24 +210,27 @@ func select_victor(winner_num: int):
 		%Announcement.announce()
 
 func play_attack_animation(left_wins: bool):
-	var tween = create_tween()
+	if tween:
+		tween.kill()
+		
+	tween = %AttackOverlay.create_tween().set_parallel(true)
 	var time : float = 0.5
 	var winner_text : String
 	
 	#Move Inklings back
 	%AttackBtn.get_parent().visible = false
 	tween.tween_property(%InklingLeft, "position:x", -800,time).from(-600)
-	tween.set_parallel()
-	await tween.tween_property(%InklingRight, "position:x", 450,time).from(250).finished
-	tween.kill()
+	#tween.set_parallel()
+	tween.parallel().tween_property(%InklingRight, "position:x", 450,time).from(250)
+	#tween.kill()
 	
 	#Inklings rush towards each other
-	tween = create_tween()
-	tween.tween_property(%InklingLeft, "position:x", -170,time * 0.8)
-	tween.set_parallel()
-	tween.tween_property(%InklingRight, "position:x", -170,time * 0.8)
-	await get_tree().create_timer(time * .7).timeout
-	tween.kill()
+	#tween = get_tree().create_tween()
+	tween.chain().tween_property(%InklingLeft, "position:x", -170,time * 0.8)
+	#tween.set_parallel()
+	tween.parallel().tween_property(%InklingRight, "position:x", -170,time * 0.8)
+	await get_tree().create_timer(time * 1.7).timeout
+	#tween.kill()
 	
 	if left_wins:
 		winner_text = Main.get_bbColor(attacker_num)
@@ -238,6 +242,8 @@ func play_attack_animation(left_wins: bool):
 	%AttackAnnouncement.text = "%s wins!" % winner_text
 		
 	await get_tree().create_timer(1.2).timeout
+	if tween and tween.is_valid():
+		tween.kill()
 
 
 func _on_credits_text_meta_clicked(meta: Variant) -> void:
