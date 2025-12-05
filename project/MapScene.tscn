@@ -749,6 +749,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ecdkt")
 [node name="AnnouncementTimer" type="Timer" parent="CanvasLayer/Overlays"]
 unique_name_in_owner = true
 process_callback = 0
+wait_time = 2.0
 one_shot = true
 ignore_time_scale = true
 

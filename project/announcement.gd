@@ -7,8 +7,8 @@ var tween : Tween
 
 func announce():
 		# Kill any existing tween before starting a new one
-	for twn in get_tree().get_processed_tweens():
-		twn.kill()
+	if tween:
+		tween.kill()
 	%Announcement.visible = true	
 	%Announcement.modulate.a = 1
 	%AnnouncementTimer.start(fade_wait)
@@ -23,12 +23,11 @@ func announce():
 	#tween.kill()
 
 func _fade_out(fade_dur :float = fade_duration):
-
-	tween = get_tree().create_tween()
 	nodeToFade = %Announcement
-	tween.tween_property(nodeToFade, "modulate:a", 0, fade_dur).from(1)
-	tween.play()
-	await tween.finished
+	tween = nodeToFade.create_tween()
+	
+	await tween.tween_property(nodeToFade, "modulate:a", 0, fade_dur).from(1).finished
+	#tween.play()
 	tween.kill()
 	nodeToFade.visible = false
 
