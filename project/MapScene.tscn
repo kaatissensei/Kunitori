@@ -1342,7 +1342,9 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Adapted from Nagaoka Mike's [url=\"https://www.altopedia.net/activities/991-paint-battle-for-japan\"][color=blue]Paint Battle for Japan[/color][/url].
-Special thanks to Celestar129 for [url=\"https://www.altopedia.net/activities/3283-splatoon-turf-takeover\"][color=blue]their amazing question sheets.[/color][/url]"
+Shoutout to Celestar129 for their amazing  [url=\"https://www.altopedia.net/activities/3283-splatoon-turf-takeover\"][color=blue]question sheets[/color][/url]."
+
+[node name="AttackTimer" type="Timer" parent="."]
 
 [connection signal="pressed" from="CanvasLayer/Overlays/ResetConfirmation/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Yes" to="." method="_reset_colors"]
 [connection signal="pressed" from="CanvasLayer/Overlays/ResetConfirmation/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/No" to="." method="_close_reset_confirmation"]

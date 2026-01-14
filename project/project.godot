@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Paint Battle Kunitori"
+config/name="Color Battle Kunitori"
 run/main_scene="uid://xvwmx62lwi2x"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/fullsize=false

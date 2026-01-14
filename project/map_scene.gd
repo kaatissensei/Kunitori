@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var ATTACK_TIMER = $AttackTimer
 var COLOR_WHEEL = preload("res://color_picker_wheel.tscn")
 var color_wheel : Node
 var child_buffer : int = 4
@@ -229,7 +230,8 @@ func play_attack_animation(left_wins: bool):
 	tween.chain().tween_property(%InklingLeft, "position:x", -170,time * 0.8)
 	#tween.set_parallel()
 	tween.parallel().tween_property(%InklingRight, "position:x", -170,time * 0.8)
-	await get_tree().create_timer(time * 1.7).timeout
+	await run_attack_timer(time * 1.7)
+	#tween.tween_interval(1.7)
 	#tween.kill()
 	
 	if left_wins:
@@ -241,10 +243,15 @@ func play_attack_animation(left_wins: bool):
 	
 	%AttackAnnouncement.text = "%s wins!" % winner_text
 		
-	await get_tree().create_timer(1.2).timeout
+	await run_attack_timer(1.2)
+	
 	if tween and tween.is_valid():
 		tween.kill()
 
+func run_attack_timer(new_wait_time: float):
+	ATTACK_TIMER.wait_time = new_wait_time
+	ATTACK_TIMER.start()
+	await ATTACK_TIMER.timeout
 
 func _on_credits_text_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
