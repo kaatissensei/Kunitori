@@ -1,1 +1,7 @@
 # Kunitori
+
+For those brave enough to attempt their own versions with other maps:
+The idea of doing other maps was mostly in the back of my mind, so the code should be relatively flexible. However, I'm sure there were a few things I could have done better to ease the process. The first thing I suggest doing is replacing the images in the prefectures folder. I didn't want to go through hardcoding the locations of each prefecture, so instead I made 47 pngs, each one blank except for a white silhouette of the prefecture. In Photoshop/Photopea, I just selected the outline of each prefecture and pasted it to a new layer in the same place. I named each layer the number and the prefecture name separated by a space (an underscore might have been better in retrospect). That naming convention is important for the code. Also, each layer had a "-e-" at the beginning so I could export all the layers at once. Making each prefecture a separate object made it easier to color them and to get which prefecture was clicked. Also, you will need a separate layer with all the numbers.
+Next, replace the prefectures array in globals.gd with a list of your cities/states/etc. The create_buttons() function in map_scene.gd will pull from this array to create buttons of each prefecture (using the image with the above naming conventions).
+
+Almost everything else is based on those names and numbers. Replace the few hardcoded 47s I missed with the size of the prefectures array, and everything else *should* fall into place.
