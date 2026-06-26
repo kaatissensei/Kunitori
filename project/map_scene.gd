@@ -8,6 +8,7 @@ var default_pref_color : Color = Color.DIM_GRAY
 var fade_wait : float = 1.0
 var fade_duration : float = 1.0
 var tween
+var max_teams : int = 10
 
 var attacker_num : int = 0
 var defender_num : int = 0
@@ -103,7 +104,7 @@ func change_color(team_num :int):
 	update_scores()
 
 func update_scores():
-	for i in range(Main.numTeams):
+	for i in range(Main.max_teams):
 		%ScoreGrid.get_child(i).get_child(0).text = "%d" % Main.scores[i]
 
 func _open_reset_confirmation():
@@ -123,13 +124,23 @@ func _fullscreen():
 	Main.fullscreen()
 
 
-func _change_num_teams(number: float) -> void:
+func _change_num_teams(number: int) -> void:
 	Main.numTeams = number
-	for i in range(1, 8):
+	#Change size if more than 8 teams
+	if number <= 8:
+		%Scores.size.x = 830
+		%ScoreGrid.columns = 4
+	else: #9-10
+		%Scores.size.x = 1000
+		%ScoreGrid.columns = 5
+		
+	#Make splats visible
+	for i in range(1, max_teams):
 		if i < Main.numTeams:
 			%ScoreGrid.get_child(i).visible = true
 		else:
 			%ScoreGrid.get_child(i).visible = false
+	
 
 
 func _show_settings() -> void:
