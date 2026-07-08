@@ -59,7 +59,7 @@ corner_radius_top_right = 50
 Panel/styles/panel = SubResource("StyleBoxFlat_nv4qw")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lpvj"]
-bg_color = Color(0.0023445897, 0.00234459, 0.00234459, 0.54509807)
+bg_color = Color(0.15686275, 0.15686275, 0.15686275, 0.60784316)
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
@@ -164,6 +164,32 @@ shader_parameter/max_or_add = false
 
 [sub_resource type="Theme" id="Theme_ecdkt"]
 Panel/styles/panel = SubResource("StyleBoxFlat_v42fa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37uxb"]
+shader = ExtResource("20_bkxd6")
+shader_parameter/thickness = 5.0000002375
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(255, 180, 25, 0.8)
+shader_parameter/border_clipping_fix = false
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/max_or_add = false
+
+[sub_resource type="Theme" id="Theme_y1bqk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3wi3f"]
+shader = ExtResource("20_bkxd6")
+shader_parameter/thickness = 5.0000002375
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(255, 180, 25, 0.8)
+shader_parameter/border_clipping_fix = false
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/max_or_add = false
 
 [sub_resource type="Gradient" id="Gradient_nvpdb"]
 colors = PackedColorArray(0.13788459, 0.13794142, 0.27976337, 1, 1, 1, 1, 1)
@@ -361,9 +387,10 @@ theme = SubResource("Theme_37uxb")
 
 [node name="ScoresText" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresHeading" unique_id=1373680769]
 custom_minimum_size = Vector2(0, 65)
-layout_mode = 0
-offset_right = 827.0
-offset_bottom = 65.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.9
 theme = ExtResource("2_yu4rc")
@@ -656,9 +683,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BurgundyScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid" unique_id=452909179]
+[node name="NavyScore" type="TextureRect" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid" unique_id=452909179]
+unique_name_in_owner = true
 visible = false
-self_modulate = Color(0.70980394, 0, 0.3764706, 1)
+self_modulate = Color(0, 0, 0.30588236, 1)
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -666,7 +694,7 @@ texture = ExtResource("3_3ergn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/BurgundyScore" unique_id=343870203]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Scores/VBoxContainer/ScoresBG/ScoreGrid/NavyScore" unique_id=343870203]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1081,7 +1109,6 @@ stretch_mode = 5
 
 [node name="Settings" type="Panel" parent="CanvasLayer" unique_id=1238824711]
 unique_name_in_owner = true
-visible = false
 z_index = 100
 anchors_preset = 8
 anchor_left = 0.5
@@ -1089,9 +1116,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -586.0
-offset_top = -199.0
+offset_top = -221.0
 offset_right = 586.0
-offset_bottom = 199.0
+offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ecdkt")
@@ -1266,9 +1293,65 @@ theme_override_font_sizes/font_size = 60
 text = "10"
 horizontal_alignment = 1
 
-[node name="Buffer" type="Control" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer" unique_id=715465127]
+[node name="Team10Buffer" type="Control" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer" unique_id=715465127]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="Team10ColorPicker" type="HBoxContainer" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer" unique_id=562342525]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/Team10ColorPicker" unique_id=786901547]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme = ExtResource("4_yqv3j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("2_a8pdw")
+theme_override_font_sizes/normal_font_size = 70
+text = "Team 10 Color:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NavyBtn" type="TextureButton" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/Team10ColorPicker" unique_id=690359796]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0.30588236, 1)
+material = SubResource("ShaderMaterial_37uxb")
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = SubResource("Theme_y1bqk")
+texture_normal = ExtResource("3_3ergn")
+texture_pressed = ExtResource("3_3ergn")
+texture_hover = ExtResource("3_3ergn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BlackBtn" type="TextureButton" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer/Team10ColorPicker" unique_id=973822243]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_3wi3f")
+use_parent_material = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_3ergn")
+texture_pressed = ExtResource("3_3ergn")
+texture_hover = ExtResource("3_3ergn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Buffer2" type="Control" parent="CanvasLayer/Settings/MarginContainer/VBoxContainer" unique_id=1931666780]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
 
 [node name="OK" type="Button" parent="CanvasLayer/Settings/MarginContainer" unique_id=1122416346]
 custom_minimum_size = Vector2(250, 100)
@@ -1442,6 +1525,8 @@ Shoutout to Celestar129 for their amazing  [url=\"https://www.altopedia.net/acti
 [connection signal="pressed" from="CanvasLayer/SettingsBar/ResetBtn" to="." method="_open_reset_confirmation"]
 [connection signal="pressed" from="CanvasLayer/Fullscreen" to="." method="_fullscreen"]
 [connection signal="value_changed" from="CanvasLayer/Settings/MarginContainer/VBoxContainer/numTeamSlider" to="." method="_change_num_teams"]
+[connection signal="pressed" from="CanvasLayer/Settings/MarginContainer/VBoxContainer/Team10ColorPicker/NavyBtn" to="." method="_change_team10_color" binds= ["Navy"]]
+[connection signal="pressed" from="CanvasLayer/Settings/MarginContainer/VBoxContainer/Team10ColorPicker/BlackBtn" to="." method="_change_team10_color" binds= ["Black"]]
 [connection signal="pressed" from="CanvasLayer/Settings/MarginContainer/OK" to="." method="_hide_settings"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/StartBtn" to="." method="_start_game"]
 [connection signal="meta_clicked" from="CanvasLayer/MainMenu/Credits/CreditsText" to="." method="_on_credits_text_meta_clicked"]

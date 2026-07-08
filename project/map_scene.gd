@@ -80,6 +80,7 @@ func change_color(team_num :int):
 		pref.self_modulate = Main.COLORS[team_num]
 		
 		Main.scores[team_num - 1] += 1
+		print("Team Num: %s" % team_num)
 		%Announcement.text = "%s takes %s (%d)" % [Main.get_bbColor(team_num), pref_name, pref_num]
 		%Announcement.announce()
 		#print("Team %d takes %s!" % [team_num, pref_name])
@@ -125,7 +126,7 @@ func _fullscreen():
 
 
 func _change_num_teams(number: int) -> void:
-	Main.numTeams = number
+	Main.set_numTeams(number)
 	#Change size if more than 8 teams
 	if number <= 8:
 		%Scores.size.x = 830
@@ -133,7 +134,14 @@ func _change_num_teams(number: int) -> void:
 	else: #9-10
 		%Scores.size.x = 1000
 		%ScoreGrid.columns = 5
-		
+	
+	if number == 10:
+		%Team10ColorPicker.visible = true
+		%Team10Buffer.visible = true
+	else:
+		%Team10ColorPicker.visible = false
+		%Team10Buffer.visible = false
+	
 	#Make splats visible
 	for i in range(1, max_teams):
 		if i < Main.numTeams:
@@ -266,3 +274,13 @@ func run_attack_timer(new_wait_time: float):
 
 func _on_credits_text_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
+
+
+func _change_team10_color(new_10_color: String) -> void:
+	Main.set_team10_color(new_10_color)
+	
+	%NavyScore.self_modulate = Main.COLORS[10]
+	%NavyBtn.use_parent_material = (new_10_color !="Navy")
+	%BlackBtn.use_parent_material = (new_10_color !="Black")
+	
+	
